@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl';
 import * as earthquake from './data/earthquakes.json';
+import { MapPin } from 'styled-icons/fa-solid/MapPin';
+import styled from 'styled-components';
 import './App.css';
 
 export default function App() {
+  const RedPin = styled(MapPin)`
+    height: 20px;
+    width: 20px;
+    color: red;
+  `;
+
   const [viewport, setViewport] = useState({
     width: '1000px',
     height: '95vh',
@@ -14,6 +22,7 @@ export default function App() {
 
   return (
     <div className="map">
+      <p />
       <ReactMapGL
         {...viewport}
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
@@ -28,7 +37,9 @@ export default function App() {
             latitude={quake.geometry.coordinates[1]}
             longitude={quake.geometry.coordinates[0]}
           >
-            <div>Quake</div>
+            <button>
+              <RedPin />
+            </button>
           </Marker>
         ))}
       </ReactMapGL>

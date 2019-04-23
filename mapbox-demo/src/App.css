@@ -3,3 +3,8 @@
   margin: 0 auto;
   margin-top: 15px;
 }
+
+button {
+  border: none;
+  background: none;
+}
