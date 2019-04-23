@@ -49,7 +49,14 @@ export default function App() {
   return (
     <div className="map">
       <div className="nav">
-        <h3>Demo App 4/23/2019 </h3>
+        <h3>Demo 4/23/2019 </h3>
+        <p>
+          Data can be found{' '}
+          <a href="https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php">
+            here
+          </a>
+          .
+        </p>
         <button className="night" onClick={isDarkmode}>
           {darkmode ? <DarkMoon /> : <LightMoon />}
         </button>
