@@ -2,6 +2,9 @@
   width: 1000px;
   margin: 0 auto;
   margin-top: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
 }
 
 button {
@@ -10,10 +13,14 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.marker:hover {
   transform: scale(1.5);
 }
 
 button:focus {
   outline: none;
+}
+
+.mapboxgl-popup-content {
+  border: 1px solid rgba(211, 211, 211, 0.315);
 }
