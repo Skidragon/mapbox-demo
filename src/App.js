@@ -28,7 +28,7 @@ export default function App() {
   `;
 
   const [viewport, setViewport] = useState({
-    width: '1000px',
+    width: '100vw',
     height: '95vh',
     latitude: 37.7749,
     longitude: -122.4194,
