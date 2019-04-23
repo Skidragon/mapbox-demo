@@ -28,8 +28,8 @@ export default function App() {
   `;
 
   const [viewport, setViewport] = useState({
-    width: '100vw',
-    height: '95vh',
+    width: '1400px',
+    height: '650px',
     latitude: 37.7749,
     longitude: -122.4194,
     zoom: 8
@@ -50,7 +50,7 @@ export default function App() {
     <div className="map">
       <div className="nav">
         <h3>Demo App 4/23/2019 </h3>
-        <button onClick={isDarkmode}>
+        <button className="night" onClick={isDarkmode}>
           {darkmode ? <DarkMoon /> : <LightMoon />}
         </button>
       </div>
