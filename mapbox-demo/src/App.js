@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import ReactMapGL from 'react-map-gl';
+import ReactMapGL, { Marker } from 'react-map-gl';
+import * as earthquake from './data/earthquakes.json';
 import './App.css';
 
 export default function App() {
@@ -21,7 +22,15 @@ export default function App() {
           setViewport(viewport);
         }}
       >
-        DEMO MAP
+        {earthquake.features.map(quake => (
+          <Marker
+            key={quake.id}
+            latitude={quake.geometry.coordinates[1]}
+            longitude={quake.geometry.coordinates[0]}
+          >
+            <div>Quake</div>
+          </Marker>
+        ))}
       </ReactMapGL>
     </div>
   );
