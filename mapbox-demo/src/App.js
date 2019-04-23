@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import ReactMapGL, { Marker } from 'react-map-gl';
+import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import * as earthquake from './data/earthquakes.json';
-import { MapPin } from 'styled-icons/fa-solid/MapPin';
+import { PrimitiveDot } from 'styled-icons/octicons/PrimitiveDot';
 import styled from 'styled-components';
 import './App.css';
 
 export default function App() {
-  const RedPin = styled(MapPin)`
+  const RedDot = styled(PrimitiveDot)`
     height: 20px;
     width: 20px;
     color: red;
@@ -20,8 +20,11 @@ export default function App() {
     zoom: 8
   });
 
+  const [selectedQuake, setSelectedQuake] = useState(null);
+
   return (
     <div className="map">
+      <h3>Demo App for 4/23/2019 </h3>
       <p />
       <ReactMapGL
         {...viewport}
@@ -37,11 +40,29 @@ export default function App() {
             latitude={quake.geometry.coordinates[1]}
             longitude={quake.geometry.coordinates[0]}
           >
-            <button>
-              <RedPin />
+            <button
+              onClick={() => {
+                setSelectedQuake(quake);
+              }}
+            >
+              <RedDot />
             </button>
           </Marker>
         ))}
+
+        {selectedQuake ? (
+          <Popup
+            latitude={selectedQuake.geometry.coordinates[1]}
+            longitude={selectedQuake.geometry.coordinates[0]}
+            onClose={() => {
+              setSelectedQuake(null);
+            }}
+          >
+            <h4>Place: {selectedQuake.properties.place}</h4>
+            <p>Magnitude: {selectedQuake.properties.mag}</p>
+            <p>Time: {}</p>
+          </Popup>
+        ) : null}
       </ReactMapGL>
     </div>
   );
